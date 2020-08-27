@@ -10,7 +10,7 @@ public class Demo {
         g.addEdges(1, 2, 4);
         g.addEdges(2, 3, 4);
         g.addEdges(1, 3, 20);
-        g.addEdges(3, 4, 4);
+        g.addEdges(3, 4, 6);
         g.printGraph();
         
         Dijistra d = new Dijistra(g, 1);
