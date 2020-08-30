@@ -5,15 +5,31 @@ import java.util.*;
 public class Demo {
 
     public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        Graph g = new Graph(5);
-        g.addEdges(1, 2, 4);
-        g.addEdges(2, 3, 4);
-        g.addEdges(1, 3, 20);
-        g.addEdges(3, 4, 6);
-        g.printGraph();
-        
-        Dijistra d = new Dijistra(g, 1);
-        Bellman_Ford b = new Bellman_Ford(g, 1);
+        try {
+            File fl = new File("N:\\New folder (3)\\221\\assignment_2\\src\\input.txt");
+            Scanner sc = new Scanner(fl);
+            String s = sc.nextLine();
+            String arr[] = new String[4];
+            arr = s.split(" ");
+            Graph g = new Graph(Integer.parseInt(arr[0]));
+            g.edges = Integer.parseInt(arr[1]);
+            int part = Integer.parseInt(arr[2]);
+            int cs = Integer.parseInt(arr[3]);
+            for (int i = 0; i < g.edges; i++) {
+                s = sc.nextLine();
+                String arr1[] = new String[part];
+                arr1 = s.split(" ");
+                g.addEdges(arr1[0], arr1[1], arr1[2]);
+            }
+            String arr2[] = new String[2];
+            for (int i = 0; i < cs; i++) {
+                s = sc.nextLine();
+                arr2 = s.split(" ");
+                int src=Integer.parseInt(arr2[0]);
+                Dijistra b=new Dijistra(g,src);   
+            }
+
+        } catch (Exception E) {
+        }
     }
 }

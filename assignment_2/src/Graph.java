@@ -28,6 +28,14 @@ public class Graph {
         adjList[vertex].add(edge);
     }
 
+    public void addEdges(String vertex, String connect, String weight) {
+        int vrtx=Integer.parseInt(vertex);
+        int con=Integer.parseInt(connect);
+        int wgh=Integer.parseInt(weight);
+        Edge edge = new Edge(vrtx, con, wgh);
+        adjList[vrtx].add(edge);
+    }
+
     public void printGraph() {
         for (int i = 0; i < vertices; i++) {
             System.out.print(i + "-->");
