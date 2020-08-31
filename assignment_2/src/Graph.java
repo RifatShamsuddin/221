@@ -23,17 +23,12 @@ public class Graph {
         }
     }
 
-    public void addEdges(int vertex, int connect, int weight) {
-        Edge edge = new Edge(vertex, connect, weight);
-        adjList[vertex].add(edge);
-    }
-
     public void addEdges(String vertex, String connect, String weight) {
-        int vrtx=Integer.parseInt(vertex);
-        int con=Integer.parseInt(connect);
-        int wgh=Integer.parseInt(weight);
-        Edge edge = new Edge(vrtx, con, wgh);
-        adjList[vrtx].add(edge);
+        int vert=Integer.parseInt(vertex);
+        int conn=Integer.parseInt(connect);
+        int wei=Integer.parseInt(weight);
+        Edge edge = new Edge(vert, conn, wei);
+        adjList[vert].add(edge);
     }
 
     public void printGraph() {

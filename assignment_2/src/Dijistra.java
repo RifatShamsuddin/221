@@ -8,7 +8,7 @@ public class Dijistra {
     Object parent[];
     Queue<Integer> Set;
 
-    public Dijistra(Graph g, int s) {
+    public Dijistra(Graph g, int s, int d) {
         distance = new int[g.vertices];
         for (int i = 0; i < distance.length; i++) {
             distance[i] = Integer.MAX_VALUE;
@@ -24,9 +24,10 @@ public class Dijistra {
         queue = addQueue(g);
         while (!queue.isEmpty()) {
             int min = min(distance, queue);
-            System.out.println(queue);
-            
             int u = queue.remove(min);
+            if(distance[u]==Integer.MAX_VALUE){
+                break;
+            }
             for (int i = 0; i < g.adjList[u].size(); i++) {
                 int v = g.adjList[u].get(i).dest;
                 if (!queue.contains(v)) {
@@ -39,8 +40,13 @@ public class Dijistra {
                 }
             }
         }
+        for(int i=0;i<distance.length;i++){
+            if(distance[i]!=Integer.MAX_VALUE){
+                System.out.println(i+"-->"+distance[i]);
+            }
+        }
+        System.out.println(distance[s]);
     }
-
     
     public LinkedList<Integer> addQueue(Graph g) {
         LinkedList<Integer> queue = new LinkedList<Integer>();
