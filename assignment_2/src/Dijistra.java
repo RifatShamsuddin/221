@@ -67,4 +67,43 @@ public class Dijistra {
         }
         return key;
     }
+    
+    public Dijistra(Graph g, int s, int d, Queue<Integer> avoid) {
+        distance = new int[g.vertices];
+        for (int i = 0; i < distance.length; i++) {
+            distance[i] = Integer.MAX_VALUE;
+        }
+        parent = new Object[g.vertices];
+        for (int i = 0; i < parent.length; i++) {
+            parent[i] = null;
+        }
+
+        Set = new LinkedList<Integer>();
+        distance[s] = 0;
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+        queue = addQueue(g);
+        while (!queue.isEmpty()) {
+            int min = min(distance, queue);
+            int u = queue.remove(min);
+            if(distance[u]==Integer.MAX_VALUE||avoid.contains(u)){
+                continue;
+            }
+            for (int i = 0; i < g.adjList[u].size(); i++) {
+                int v = g.adjList[u].get(i).dest;
+                if (!queue.contains(v)) {
+                    break;
+                }
+                int alt = distance[u] + g.weight(u, v);
+                if (distance[v] > alt) {
+                    distance[v] = alt;
+                    parent[v] = u;
+                }
+            }
+        }
+        for(int i=0;i<Set.size();i++){
+            Object a=Set.poll();
+            System.out.println(a);
+        }
+        System.out.println(distance[d]);
+    }
 }
