@@ -25,7 +25,7 @@ public class Dijistra {
         while (!queue.isEmpty()) {
             int min = min(distance, queue);
             int u = queue.remove(min);
-            if(distance[u]==Integer.MAX_VALUE){
+            if (distance[u] == Integer.MAX_VALUE) {
                 break;
             }
             for (int i = 0; i < g.adjList[u].size(); i++) {
@@ -40,14 +40,19 @@ public class Dijistra {
                 }
             }
         }
-        for(int i=0;i<distance.length;i++){
-            if(distance[i]!=Integer.MAX_VALUE){
-                System.out.println(i+"-->"+distance[i]);
-            }
-        }
         System.out.println(distance[s]);
+        
+                int i=d;
+        System.out.print(i+"-->");
+        while((int)parent[i]!=s){
+            i=(int)parent[i];
+            System.out.print(i+"-->");
+        }
+        i=s;
+        System.out.print(i);
+        
     }
-    
+
     public LinkedList<Integer> addQueue(Graph g) {
         LinkedList<Integer> queue = new LinkedList<Integer>();
         for (int i = 0; i < g.vertices; i++) {
@@ -61,13 +66,13 @@ public class Dijistra {
         int key = 0;
         for (int i = 1; i < queue.size(); i++) {
             if (a[queue.get(i)] < min) {
-                min=a[queue.get(i)];
+                min = a[queue.get(i)];
                 key = i;
             }
         }
         return key;
     }
-    
+
     public Dijistra(Graph g, int s, int d, Queue<Integer> avoid) {
         distance = new int[g.vertices];
         for (int i = 0; i < distance.length; i++) {
@@ -85,7 +90,7 @@ public class Dijistra {
         while (!queue.isEmpty()) {
             int min = min(distance, queue);
             int u = queue.remove(min);
-            if(distance[u]==Integer.MAX_VALUE||avoid.contains(u)){
+            if (distance[u] == Integer.MAX_VALUE || avoid.contains(u)) {
                 continue;
             }
             for (int i = 0; i < g.adjList[u].size(); i++) {
@@ -100,10 +105,19 @@ public class Dijistra {
                 }
             }
         }
-        for(int i=0;i<Set.size();i++){
-            Object a=Set.poll();
-            System.out.println(a);
+        
+//        for(int j=0;j<parent.length;j++){
+//            System.out.println(j+"--"+parent[j]);
+//        }
+
+System.out.println(distance[d]);
+        int i=d;
+        System.out.print(i+"-->");
+        while((int)parent[i]!=s){
+            i=(int)parent[i];
+            System.out.print(i+"-->");
         }
-        System.out.println(distance[d]);
+        i=s;
+        System.out.print(i);
     }
 }

@@ -8,8 +8,9 @@ public class Graph {
     int edges;
      ArrayList<ArrayList<Edge>> adjList = new ArrayList<ArrayList<Edge>>();
 
-    public Graph(String v) {
-        vertices = Integer.parseInt(v);
+    public Graph(int v, String e) {
+        vertices = v;
+        edges=Integer.parseInt(e);
         for (int i = 0; i < vertices; i++) {
             ArrayList<Edge> babyList = new ArrayList<Edge>();
             adjList.add(babyList);

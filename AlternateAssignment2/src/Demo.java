@@ -11,8 +11,9 @@ public class Demo {
             String s = sc.nextLine();
             String arr[] = new String[4];
             arr = s.split(" ");
-            Graph g=new Graph(arr[0]);
-            g.edges = Integer.parseInt(arr[1]);
+            int p=Integer.parseInt(arr[0]);
+            p=p+1;
+            Graph g=new Graph(p,arr[1]);
             int part = Integer.parseInt(arr[2]);
             int cs = Integer.parseInt(arr[3]);
             for (int i = 0; i < g.edges; i++) {
