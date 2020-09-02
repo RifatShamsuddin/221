@@ -33,9 +33,8 @@ public class Demo {
                 arr2 = s.split(" ");
                 int src = Integer.parseInt(arr2[0]);
                 int fdest = Integer.parseInt(arr2[1]);
-                Dijistra b = new Dijistra(g, src, dest);
-                System.out.println("Case " + (i+1) + ": " + b.distance[dest]);
-                b.printResult(b, src, dest);
+                Dijistra b = new Dijistra(g, src, fdest);
+                b.printResult(b, src, fdest);
             }
         } catch (Exception E) {
         }
