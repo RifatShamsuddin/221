@@ -21,14 +21,30 @@ public class Bellman_Ford {
             for (int j = 0; j < g.adjList[i].size(); j++) {
                 int u = g.adjList[i].get(j).src;
                 int v = g.adjList[i].get(j).dest;
-                int w= g.weight(u, v);
+                int w = g.weight(u, v);
                 if (distance[u] != Integer.MAX_VALUE && distance[u] + w < distance[v]) {
                     distance[v] = distance[u] + w;
                 }
             }
         }
-       for(int i=0;i<distance.length;i++){
-           System.out.println(i+"-->"+distance[i]);
-       }
+        for (int i = 0; i < distance.length; i++) {
+            System.out.println(i + "-->" + distance[i]);
+        }
+    }
+
+    public void printResult(Bellman_Ford bf, int s, int d) {
+        if (bf.distance[d] == Integer.MAX_VALUE) {
+            System.out.println("Be seeing ya, John");
+            return;
+        }
+        int i = d;
+        System.out.print((i) + "-->");
+        while ((int) parent[i] != s) {
+            i = (int) parent[i];
+            System.out.print((i) + "-->");
+        }
+        i = s;
+        System.out.print(i);
+        System.out.println();
     }
 }

@@ -26,8 +26,9 @@ public class Demo_2 {
             for(int i=0;i<arr1.length;i++){
                 avoid.add(Integer.parseInt(arr1[i]));
             }
+            String location []={"Mouchak","Panthapath","Dhanmondi","Lalmatia","Rampura","Badda","Hatirjheel","Shahabagh","Nilkhet","TSC","Dhaka University","BUET"};
             Dijistra d=new Dijistra(g,src,dest,avoid);
-            d.printResult(d, src, dest);
+            d.printResultArray(d, src, dest, location);
         } catch (Exception E) {
         }
     }

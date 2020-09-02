@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Dijistra {
 
-     int distance[];
-     Object parent[];
-     Queue<Integer> Set;
+    int distance[];
+    Object parent[];
+    Queue<Integer> Set;
 
     //dijkstra for first
     public Dijistra(Graph g, int s, int d) {
@@ -77,14 +77,12 @@ public class Dijistra {
                 }
             }
         }
-        System.out.println(distance[d]);
     }
 
     /*
     Did not use priority queue instead ued a linkedlist 
     that returns the index of the smallest weight
      */
-
     public LinkedList<Integer> addQueue(Graph g) {
         LinkedList<Integer> queue = new LinkedList<Integer>();
         for (int i = 0; i < g.vertices; i++) {
@@ -124,6 +122,33 @@ public class Dijistra {
         System.out.print(i);
         System.out.println();
     }
-    
-    
+
+        /*
+        This portion is not part of the dijkstra
+        It's hare to print the shortest path and the result for Task 2
+     */
+    public void printResultArray(Dijistra dj, int s, int d, String a[]) {
+        if (dj.distance[d] == Integer.MAX_VALUE) {
+            System.out.println("Be seeing ya, John");
+            return;
+        }
+        int i = d;
+        Stack<String> q = new Stack();
+        q.add(a[i]);
+        while ((int) parent[i] != s) {
+            i = (int) parent[i];
+            q.add(a[i]);
+        }
+        i = s;
+        q.add(a[i]);
+        for (int j = 0; j < q.size(); i++) {
+            if (j == q.size() - 1) {
+                System.out.print(q.pop());
+            } else {
+                System.out.print(q.pop() + "-->");
+            }
+        }
+        System.out.println();
+        System.out.println("Path Cost:"+distance[d]);
+    }
 }
