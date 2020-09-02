@@ -4,10 +4,11 @@ import java.util.*;
 
 public class Dijistra {
 
-    int distance[];
-    Object parent[];
-    Queue<Integer> Set;
+     int distance[];
+     Object parent[];
+     Queue<Integer> Set;
 
+    //dijkstra for first
     public Dijistra(Graph g, int s, int d) {
         distance = new int[g.vertices];
         for (int i = 0; i < distance.length; i++) {
@@ -40,39 +41,10 @@ public class Dijistra {
                 }
             }
         }
-        System.out.println(distance[s]);
-        
-                int i=d;
-        System.out.print(i+"-->");
-        while((int)parent[i]!=s){
-            i=(int)parent[i];
-            System.out.print(i+"-->");
-        }
-        i=s;
-        System.out.print(i);
-        
+        System.out.println(distance[d]);
     }
 
-    public LinkedList<Integer> addQueue(Graph g) {
-        LinkedList<Integer> queue = new LinkedList<Integer>();
-        for (int i = 0; i < g.vertices; i++) {
-            queue.add(i);
-        }
-        return queue;
-    }
-
-    public int min(int a[], LinkedList<Integer> queue) {
-        int min = a[queue.get(0)];
-        int key = 0;
-        for (int i = 1; i < queue.size(); i++) {
-            if (a[queue.get(i)] < min) {
-                min = a[queue.get(i)];
-                key = i;
-            }
-        }
-        return key;
-    }
-
+    //This is for problem two because it includes Queue of nodes that we must avoid
     public Dijistra(Graph g, int s, int d, Queue<Integer> avoid) {
         distance = new int[g.vertices];
         for (int i = 0; i < distance.length; i++) {
@@ -105,19 +77,53 @@ public class Dijistra {
                 }
             }
         }
-        
-//        for(int j=0;j<parent.length;j++){
-//            System.out.println(j+"--"+parent[j]);
-//        }
-
-System.out.println(distance[d]);
-        int i=d;
-        System.out.print(i+"-->");
-        while((int)parent[i]!=s){
-            i=(int)parent[i];
-            System.out.print(i+"-->");
-        }
-        i=s;
-        System.out.print(i);
+        System.out.println(distance[d]);
     }
+
+    /*
+    Did not use priority queue instead ued a linkedlist 
+    that returns the index of the smallest weight
+     */
+
+    public LinkedList<Integer> addQueue(Graph g) {
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+        for (int i = 0; i < g.vertices; i++) {
+            queue.add(i);
+        }
+        return queue;
+    }
+
+    public int min(int a[], LinkedList<Integer> queue) {
+        int min = a[queue.get(0)];
+        int key = 0;
+        for (int i = 1; i < queue.size(); i++) {
+            if (a[queue.get(i)] < min) {
+                min = a[queue.get(i)];
+                key = i;
+            }
+        }
+        return key;
+    }
+
+    /*
+        This portion is not part of the dijkstra
+        It's hare to print the shortest path and the result
+     */
+    public void printResult(Dijistra dj, int s, int d) {
+        if (dj.distance[d] == Integer.MAX_VALUE) {
+            System.out.println("Be seeing ya, John");
+            return;
+        }
+        int i = d;
+        System.out.print((i) + "-->");
+        while ((int) parent[i] != s) {
+            i = (int) parent[i];
+            System.out.print((i) + "-->");
+        }
+        i = s;
+        System.out.print(i);
+        System.out.println();
+    }
+    
+    
 }

@@ -19,14 +19,15 @@ public class Demo_2 {
                 g.addEdges(arr[0], arr[1], arr[2]);
             }
             int src=Integer.parseInt(sc.nextLine());
-            int dist=Integer.parseInt(sc.nextLine());
+            int dest=Integer.parseInt(sc.nextLine());
             Queue<Integer> avoid = new LinkedList<Integer>();
             s=sc.nextLine();
             String[] arr1=s.split(",");
             for(int i=0;i<arr1.length;i++){
                 avoid.add(Integer.parseInt(arr1[i]));
             }
-            Dijistra d=new Dijistra(g,src,dist,avoid);
+            Dijistra d=new Dijistra(g,src,dest,avoid);
+            d.printResult(d, src, dest);
         } catch (Exception E) {
         }
     }
