@@ -28,7 +28,8 @@ public class Bellman_Ford {
             }
         }
         for (int i = 0; i < distance.length; i++) {
-            System.out.println(i + "-->" + distance[i]);
+            System.out.print(i + "-->" + distance[i]);
+            System.out.println();
         }
     }
 

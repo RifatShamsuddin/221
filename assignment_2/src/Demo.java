@@ -33,7 +33,7 @@ public class Demo {
                 arr2 = s.split(" ");
                 int src = Integer.parseInt(arr2[0]);
                 int fdest = Integer.parseInt(arr2[1]);
-                System.out.println("Case " + (i + 1) + ":");
+                System.out.print("Case " + (i + 1) + ":");
                 Dijistra b = new Dijistra(g, src, fdest);
                 
                 //Remove the comment sign to print the routes to the shortest path
