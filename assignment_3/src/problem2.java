@@ -15,9 +15,8 @@ public class problem2 {
             String[] y = s2.split(" ");
             int[][] g = new int[x.length + 1][y.length + 1];
             LCS l = new LCS();
-            int lengthOfLCS = l.LCS(g, x, y);
-            System.out.println(lengthOfLCS);
-            String s=l.Stringlcs(g, x, y);
+            System.out.println(l.LCS(g, x, y));
+            String s = l.Stringlcs(g, x, y);
             printLine(s);
         } catch (Exception e) {
         }
