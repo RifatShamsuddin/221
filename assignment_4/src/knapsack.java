@@ -16,7 +16,6 @@ public class knapsack {
 
     //For problem 1
     public int getMaxValue(int cap, int num, int g[][]) {
-        Queue q = new LinkedList();
         for (int i = 0; i < g.length; i++) {
             for (int j = 0; j < g[0].length; j++) {
                 if (i == 0 || j == 0) {
@@ -30,29 +29,10 @@ public class knapsack {
         }
         return g[num][cap];
     }
-
-    public void printArr(int[][] g) {
-        for (int i = 0; i < g.length; i++) {
-            System.out.print(i + "  ");
-            for (int j = 0; j < g[0].length; j++) {
-                if (Integer.toString(g[i][j]).length() == 3) {
-                    System.out.print(g[i][j] + " ");
-                } else if (Integer.toString(g[i][j]).length() == 2) {
-                    System.out.print(g[i][j] + "  ");
-                } else {
-                    System.out.print(g[i][j] + "   ");
-                }
-            }
-            System.out.println();
-        }
-    }
-
-    public int look(int g[][]) {
-        return 0;
-    }
-
-    public Queue knapsackPrintLine(int g[][]) {
-        Queue q = new LinkedList();
+    
+    //Prints the resutlt or the items
+    public Stack knapsackPrintLine(int g[][]) {
+        Stack q = new Stack();
         int i = g.length - 1;
         int j = g[0].length - 1;
         float k = g[i][j];
@@ -68,20 +48,20 @@ public class knapsack {
         return q;
     }
 
-    public void printPlayer(Queue q, String player[]) {
+    public void printPlayer(Stack q, String player[]) {
         while (!q.isEmpty()) {
-            Object a = q.poll();
+            Object a = q.pop();
             if (q.size() >= 1) {
                 System.out.print(player[(Integer) a] + "-->");
             } else {
                 System.out.print(player[(Integer) a]);
             }
         }
+        System.out.println();
     }
 
     //For problem 2
     public float getMaxValue(int cap, int num, float g[][]) {
-        Queue q = new LinkedList();
         for (int i = 0; i < g.length; i++) {
             for (int j = 0; j < g[0].length; j++) {
                 if (i == 0 || j == 0) {
@@ -90,26 +70,15 @@ public class knapsack {
                     g[i][j] = g[i - 1][j];
                 } else {
                     float p = Math.max(value[i - 1] + g[i - 1][j - weight[i - 1]], g[i - 1][j]);
-                    String n = String.format("%.1f", p);
+                    String n = String.format("%.2f", p);
                     g[i][j] = Float.parseFloat(n);
                 }
             }
         }
         return g[num][cap];
     }
-
-    public void printArr(float[][] g) {
-        for (int i = 0; i < g.length; i++) {
-            System.out.print(i + "  ");
-            for (int j = 0; j < g[0].length; j++) {
-                System.out.print(g[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-    
-        public Queue knapsackPrintLine(float g[][]) {
-        Queue q = new LinkedList();
+        public Stack knapsackPrintLine(float g[][]) {
+        Stack q = new Stack();
         int i = g.length - 1;
         int j = g[0].length - 1;
         float k = g[i][j];

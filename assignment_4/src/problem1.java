@@ -22,9 +22,13 @@ public class problem1 {
                 k.weight[i] = Integer.parseInt(tkn.nextToken());
                 k.value[i] = Integer.parseInt(tkn.nextToken());
                 i++;
-            }
-            System.out.println(k.getMaxValue(budget, num, g));
+            }           
+            //Output protion
+            System.out.println("Bought Players:");
+            int a=k.getMaxValue(budget, num, g);
             k.printPlayer(k.knapsackPrintLine(g), player);
+            System.out.println("Maximum summation of form: "+a);
+            //
         } catch (Exception e) {
         }
     }

@@ -25,9 +25,10 @@ public class problem2 {
                 trophy[i] = tkn.nextToken();
                 i++;
             }
-            System.out.println(k.getMaxValue(cap, num, g));
-            k.knapsackPrintLine(g);
+            System.out.println("Name of clubs whose trophies were sold:");
+            float l=k.getMaxValue(cap, num, g);
             k.printPlayer(k.knapsackPrintLine(g), clubs);
+            System.out.println("Maximum money he earned: "+l);
             
         } catch (Exception A) {
         }
